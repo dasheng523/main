@@ -1,0 +1,6 @@
+{:test-data "88"
+ :neo4j-url "bolt://localhost:7687"
+ :neo4j-user "neo4j"
+ :neo4j-pass "a5235013"
+ }
+

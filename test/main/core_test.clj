@@ -1,7 +1,15 @@
 (ns main.core-test
   (:require [clojure.test :refer :all]
-            [main.core :refer :all]))
+            [main.core :refer :all]
+            [cprop.core :refer [load-config]]))
+
+
+(def env (load-config))
 
 (deftest a-test
-  (testing "FIXME, I fail."
-    (is (= 0 1))))
+  (testing "example, I fail."
+    (is (= 1 1))))
+
+(deftest env-test
+  (testing "env testing"
+    (is (= "88" (env :test-data)))))

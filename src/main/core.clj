@@ -1,7 +1,9 @@
 (ns main.core
-  (:gen-class))
+  (:gen-class)
+  (:require [main.app :refer [start-app]]))
 
 (defn -main
-  "I don't do a whole lot ... yet."
+  "程序入口"
   [& args]
-  (println "Hello, World!"))
+  (start-app)
+  (println "启动完毕"))
