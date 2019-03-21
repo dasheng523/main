@@ -1,7 +1,11 @@
 (ns main.web.routes.test
   (:require  [compojure.core :as compojure :refer [GET POST wrap-routes routes]]
              [compojure.route :as route]
-             [net.cgrand.enlive-html :as html]))
+             [clojure.tools.logging :as log]
+             [net.cgrand.enlive-html :as html]
+             [ring.util.response :as resp]
+             [main.wechat :as wechat]
+             [main.common.func :as func]))
 
 
 (defn hello-world-handler
@@ -16,7 +20,15 @@
 
 (defn index-page
   [req]
-  (apply str (main-template "/hello")))
+  (-> (func/fill-url "/wechat")
+      (wechat/create-auth-url)
+      (main-template)
+      (->> (apply str))))
+
+(defn wechat-page
+  [{:keys [query-params]}]
+  (log/info query-params)
+  (resp/response (wechat/get-access-token (get query-params "code"))))
 
 
 
@@ -28,6 +40,7 @@
   (compojure/routes
    (GET "/hello" [] hello-world-handler)
    (GET "/index" [] index-page)
+   (GET "/wechat" [] wechat-page)
    (GET "/error" [] error-page)
    (route/not-found "404")))
 

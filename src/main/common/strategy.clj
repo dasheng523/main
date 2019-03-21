@@ -3,7 +3,7 @@
 
 
 (defn retrydo
-  "抛异常重试，重试max-times次，每次间隔interval秒"
+  "抛异常重试，重试max-times次，每次间隔interval毫秒"
   [max-times interval]
   (fn [dofn]
     (fn [& args]
