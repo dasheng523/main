@@ -8,3 +8,6 @@
 (defn stop []
   (stop-app))
 
+(defn restart []
+  (stop)
+  (start))

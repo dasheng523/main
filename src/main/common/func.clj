@@ -1,4 +1,4 @@
-(ns main.common
+(ns main.common.func
   (:require [slingshot.slingshot :refer [throw+ try+]]
             [clojure.string :as str]))
 

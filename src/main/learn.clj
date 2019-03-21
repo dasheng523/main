@@ -27,7 +27,7 @@
 
 ;; 重试测试案例
 ;; Fake function that returns a list of files but fails the first three times.
-(let [cnt (atom 0)]
+#_(let [cnt (atom 0)]
   (defn list-s3-files []
     (when (< @cnt 3)
       (swap! cnt inc)
@@ -181,15 +181,3 @@
   (println (<!! cc))
   (println (<!! cc))
   (println (<!! cc)))
-
-
-#_(let [c (chan 3 (map inc))]
-  (a/go (>! c 1)
-        (>! c 1)
-        (>! c 1)
-        (>! c 1))
-  (a/go-loop []
-    (println (<! c))
-    (println (<! c))
-    (recur)))
-

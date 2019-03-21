@@ -1,7 +1,8 @@
 (ns main.spider.douban
   (:require [main.app :refer [env]]
             [main.html-parser :as hparser]
-            [main.common :as common]
+            [main.common.func :as common]
+            [main.common.strategy :as strategy]
             [clj-http.client :as http]
             [perseverance.core :as p]
             [cheshire.core :as json]
@@ -27,13 +28,12 @@
 
 
 ;; 我觉得应该在这个函数中定义各种抓取策略，而不是在具体逻辑中掺杂各种调度策略。它应该抽离成单独体系。
-(defn http-get
-  "会自动重试的http get"
-  [url]
-  (p/retry {:strategy (p/constant-retry-strategy 1000 5)}
-    (p/retriable {}
-      (log/info "visiting..." url)
-      (http/get url (create-default-header)))))
+(def http-get
+  #((-> http/get
+        ((strategy/retrydo 5 1000)))
+    %
+    (create-default-header)))
+
 
 
 (defn get-films-list-html
@@ -42,6 +42,7 @@
   (some-> (str "https://movie.douban.com/j/new_search_subjects?sort=U&range=0,10&tags=&start=" (* page 20))
           http-get
           :body))
+
 
 (defn parse-films-url
   "在电影列表数据中解析出对应的详情url"
@@ -71,7 +72,7 @@
                      http-get
                      :body)
         selectors {:firm-info (hparser/select-json #"ld\+json\">([\s\S]+?)</script>")
-                   :intro (hparser/select-text [:div#link-report (hparser/attr? :property)])}
+                   :intro (hparser/select-text [:div#link-report (enlive/attr? :property)])}
         result (hparser/parse html selectors)]
     (if (empty? (some-> result :firm-info :name))
       (throw+ {:type :fecth-error :msg "获取电影详情数据异常" :data html}))
