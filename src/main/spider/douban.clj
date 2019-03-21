@@ -1,5 +1,5 @@
 (ns main.spider.douban
-  (:require [main.app :refer [env]]
+  (:require [main.config :refer [env]]
             [main.html-parser :as hparser]
             [main.common.func :as common]
             [main.common.strategy :as strategy]

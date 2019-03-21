@@ -1,9 +1,9 @@
-(ns main.learn
-  (:require  [clojure.test :as t]
-             [neo4j-clj.core :as db :refer [defquery]]
-             [main.app :refer [env neo-conn]]
-             [perseverance.core :as p]
-             [clojure.core.async :refer [>! <! >!! <!! chan] :as a]))
+(ns main.learn-some
+  (:require [main.learn :as sut]
+            [clojure.test :as t]
+            [neo4j-clj.core :as db :refer [defquery]]
+            [perseverance.core :as p]
+            [clojure.core.async :refer [>! <! >!! <!! chan] :as a]))
 
 ;; 记得使用with-open，因为session是一次性的，需要进行回收with-open。
 ;; 本来想抽出来的，但是就是考虑到defquery可能需要执行多个命令，所以决定不做。

@@ -1,7 +1,7 @@
 (ns main.common.func
   (:require [slingshot.slingshot :refer [throw+ try+]]
             [clojure.string :as str]
-            [main.app :refer [env]]))
+            [main.config :refer [env]]))
 
 
 

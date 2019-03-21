@@ -1,6 +1,10 @@
 (ns main.web.webserver
   (:require
    [compojure.core :refer [routes wrap-routes]]
+   [mount.core :refer [defstate] :as mount]
+   [clojure.tools.logging :as log]
+   [org.httpkit.server :as server]
+   [main.config :refer [env]]
    [main.web.routes.test :as route-test]
    [main.web.middleware :as middleware]
    ))
@@ -15,3 +19,13 @@
     (-> route-test/web-routes
         (wrap-routes middleware/wrap-base)))))
 
+
+(defstate web-server
+  :start
+  (do (log/info "正在启动web-server...")
+      (server/run-server
+       main-handler
+       {:port (:web-server-port env)}))
+  :stop
+  (do (log/info "关闭web-server...")
+      (web-server :timeout 500)))

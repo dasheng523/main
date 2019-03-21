@@ -26,7 +26,10 @@
   :target-path "target/%s"
   :plugins []
   :profiles
-  {:uberjar {:aot :all}
+  {:uberjar {:aot :all
+             :uberjar-name "main.jar"
+             :source-paths ["env/prod/clj"]
+             :resource-paths ["env/prod/resources"]}
 
    :dev           [:project/dev :profiles/dev]
    :test          [:project/dev :project/test :profiles/test]

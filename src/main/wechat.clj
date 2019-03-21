@@ -1,5 +1,5 @@
 (ns main.wechat
-  (:require [main.app :refer [env]]
+  (:require [main.config :refer [env]]
             [main.common.strategy :refer [retrydo]]
             [clj-http.client :as http]
             [cheshire.core :as json]
@@ -16,7 +16,6 @@
   ([url]
    (create-auth-url url "snsapi_base" "default")))
 
-#_(create-auth-url "http://www.dianduoduo.top/aaa?ff=2")
 
 (defn get-access-token
   "获取access-token"
