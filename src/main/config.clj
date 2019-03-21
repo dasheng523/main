@@ -9,4 +9,5 @@
     (log/info "读取配置...")
     (load-config))
   :stop
-  (do (log/info "关闭配置...")))
+  (do (log/info "关闭配置...")
+      {}))
