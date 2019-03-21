@@ -16,7 +16,7 @@
   (do (log/info "关闭配置...")))
 
 
-(defstate neo-conn
+#_(defstate neo-conn
   :start
   (do (log/info "连接neo4j数据库...")
       (db/connect (:neo4j-url env) (:neo4j-user env) (:neo4j-pass env))))
