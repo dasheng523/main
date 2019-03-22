@@ -5,6 +5,8 @@
             [cheshire.core :as json]
             [ring.util.codec :as codec]))
 
+(def openid (-> env :wx-openid))
+
 (def http-post
   (-> http/post
       ((retrydo 5 500))))
