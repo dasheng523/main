@@ -1,6 +1,7 @@
 (ns main.app
   (:require [main.config]
             [main.web.webserver]
+            [main.db]
             [mount.core :refer [defstate] :as mount]))
 
 

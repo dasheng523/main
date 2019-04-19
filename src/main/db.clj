@@ -1,4 +1,4 @@
-(ns main.neodb
+(ns main.db
   (:require [mount.core :refer [defstate] :as mount]
             [clojure.tools.logging :as log]
             [neo4j-clj.core :as db :refer [defquery]]

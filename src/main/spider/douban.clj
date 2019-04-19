@@ -36,7 +36,7 @@
 
 
 
-(defn get-films-list-html
+(defn get-movies-list-html
   "获取电影列表html,从第0页开始"
   [page]
   (some-> (str "https://movie.douban.com/j/new_search_subjects?sort=U&range=0,10&tags=&start=" (* page 20))
@@ -44,7 +44,7 @@
           :body))
 
 
-(defn parse-films-url
+(defn parse-movies-url
   "在电影列表数据中解析出对应的详情url"
   [html]
   (let [data (-> html
@@ -65,7 +65,7 @@
   (last (str/split url #"/")))
 
 
-(defn get-films-detail
+(defn get-movies-detail
   "获取电影详情数据"
   [url]
   (let [html (some-> url
@@ -84,7 +84,7 @@
 
 ;; test
 #_(last (str/split "/subject/3878007/" #"/"))
-#_(def film-detail (get-films-detail "https://movie.douban.com/subject/1292064/"))
+#_(def film-detail (get-movies-detail "https://movie.douban.com/subject/1292064/"))
 
 (defn parse-awards
   "解析奖项页面数据"

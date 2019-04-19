@@ -7,7 +7,7 @@
 (defn async->>
   "串联异步数据流，返回in,out两个端口"
   [list & trans]
-  (let [chans (for [_ (range (+ 1 (count trans)))] (a/chan))]
+  (let [chans (repeatedly (count trans) (a/chan 5))]
     (dotimes [i (count trans)]
       (a/pipeline 3 (nth chans (+ 1 i)) (nth trans i) (nth chans i)))
     {:in (first chans)
@@ -19,3 +19,5 @@
   (doseq [item data]
     (a/go
       (>! (:in asystream) item))))
+
+
