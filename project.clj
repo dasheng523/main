@@ -14,8 +14,6 @@
                  [com.grammarly/perseverance "0.1.3"]    ; 重试库
                  [cheshire "5.8.0"]    ; json
                  [org.clojure/core.async "0.4.490"]    ; async
-                 [com.github.binarywang/weixin-java-mp "3.3.0"]    ; 微信公众号
-                 [com.github.binarywang/weixin-java-pay "3.3.0"]    ; 微信支付
                  [ring/ring-core "1.7.1"]    ; http服务器
                  [ring/ring-json "0.4.0"]    ; ring-json
                  [ring/ring-codec "1.1.1"]    ; 处理url的
