@@ -1,6 +1,6 @@
 (ns main.neodb.douban
   (:require [neo4j-clj.core :as db :refer [defquery]]
-            [main.db :refer [neo-conn]]
+            #_[main.db :refer [neo-conn]]
             [clojure.string :as str]))
 
 
@@ -37,6 +37,7 @@
   #(str "CREATE (p:" % " $data)"))
 
 
+(def neo-conn 1)
 
 (defn simple-query
   "简单查询"
