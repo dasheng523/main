@@ -1,12 +1,13 @@
 (ns main.web.webserver
   (:require
    [compojure.core :refer [routes wrap-routes]]
+   [compojure.route :as route]
    [mount.core :refer [defstate] :as mount]
    [clojure.tools.logging :as log]
    [org.httpkit.server :as server]
    [main.config :refer [env]]
-   [main.web.routes.test :as route-test]
-   [main.web.middleware :as middleware]
+   [main.web.routes.test :as route-test :refer [web-routes]]
+   [main.web.routes.api :refer [api-routes git-routes]]
    ))
 
 ;; 不能热部署，有点遗憾。不过在ring里面有个插件可以做到，但我并没有使用ring服务器。影响不大，暂时搁置吧.
@@ -16,8 +17,10 @@
 (def main-handler
   (->
    (routes
-    (-> route-test/web-routes
-        (wrap-routes middleware/wrap-base)))))
+    #'api-routes
+    #'git-routes
+    #'web-routes
+    (route/not-found "404"))))
 
 
 (defstate web-server

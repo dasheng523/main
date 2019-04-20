@@ -18,6 +18,7 @@
                  [ring/ring-json "0.4.0"]    ; ring-json
                  [ring/ring-codec "1.1.1"]    ; 处理url的
                  [org.slf4j/slf4j-simple "1.6.1"]    ; slf4j日志
+                 [metosin/compojure-api "2.0.0-alpha30"]    ; swagger-ui
                  [http-kit "2.3.0"]    ; 网络服务器
                  [compojure "1.6.1"]]    ; web路由
   :main ^:skip-aot main.core

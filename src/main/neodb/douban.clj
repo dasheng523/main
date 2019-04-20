@@ -84,14 +84,14 @@
           data))
 
 
-(parse-query "MATCH (n:$label <where>) return n" {:label 111 :where {:a 66}})
+#_(parse-query "MATCH (n:$label <where>) return n" {:label 111 :where {:a 66}})
 
 (defn execute-query [query data]
   (simple-query
    (parse-query query data)
    data))
 
-(execute-query (str "MATCH (n:<label> <where>) return n") {:label "Person" :where {:a 66}})
+#_(execute-query (str "MATCH (n:<label> <where>) return n") {:label "Person" :where {:a 66}})
 
 
 ;; 现在的大问题就是事务
@@ -108,11 +108,10 @@
 
 
 
-(build-query {:method "return"
+#_(build-query {:method "return"
               :label "person"
               :data {:a 66}
               :type "MATCH"})
-"MATCH (n:<label> <where>) DELETE n"
 
 
 (defn simple-create-node
@@ -133,5 +132,5 @@
        (def fname# (partial simple-create-node label#)))))
 
 
-(define-create-fns node-list)
+#_(define-create-fns node-list)
 

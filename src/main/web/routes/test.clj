@@ -4,8 +4,12 @@
              [clojure.tools.logging :as log]
              [net.cgrand.enlive-html :as html]
              [ring.util.response :as resp]
+             [cheshire.core :as json]
+             [ring.util.http-response :refer :all]
              [main.wechat :as wechat]
-             [main.common.func :as func]))
+             [main.common.func :as func]
+             [main.web.middleware :as middleware])
+  (:import (java.util Base64$Encoder)))
 
 
 (defn hello-world-handler
@@ -31,16 +35,31 @@
   (resp/response (wechat/get-access-token (get query-params "code"))))
 
 
-
 (defn error-page
   [req]
   (throw (Exception. "test exception")))
 
+(defn test-post
+  [req]
+  (log/info (-> req
+                (dissoc :route-handler)
+                (dissoc :async-channel)
+                (dissoc :route-middleware)
+                (dissoc :content-type)
+                (dissoc :remote-addr)
+                (dissoc :compojure/route)
+                (dissoc :body)))
+  (ok {:dd "test"}))
+
+
+
+
 (def web-routes
-  (compojure/routes
-   (GET "/hello" [] hello-world-handler)
-   (GET "/index" [] index-page)
-   (GET "/wechat" [] wechat-page)
-   (GET "/error" [] error-page)
-   (route/not-found "404")))
+  (-> (compojure/routes
+       (GET "/hello" [] hello-world-handler)
+       (GET "/index" [] index-page)
+       (GET "/wechat" [] wechat-page)
+       (GET "/error" [] error-page)
+       (POST "/test-post" [] test-post))
+      (wrap-routes middleware/wrap-base)))
 
