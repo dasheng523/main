@@ -41,7 +41,7 @@
 
 
 
-(def web-routes
+(def test-routes
   (-> (compojure/routes
        (GET "/hello" [] hello-world-handler)
        (GET "/error" [] error-page)

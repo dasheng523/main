@@ -6,7 +6,8 @@
    [clojure.tools.logging :as log]
    [org.httpkit.server :as server]
    [main.config :refer [env]]
-   [main.web.routes.test :as route-test :refer [web-routes]]
+   [main.web.routes.test :as route-test :refer [test-routes]]
+   [main.web.routes.common :as croute :refer [web-routes]]
    [main.web.routes.api :refer [api-routes git-routes]]
    ))
 
@@ -20,6 +21,7 @@
     #'api-routes
     #'git-routes
     #'web-routes
+    #'test-routes
     (route/not-found "404"))))
 
 
