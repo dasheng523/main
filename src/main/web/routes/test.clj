@@ -41,14 +41,15 @@
 
 (defn test-post
   [req]
-  (log/info (-> req
-                (dissoc :route-handler)
-                (dissoc :async-channel)
-                (dissoc :route-middleware)
-                (dissoc :content-type)
-                (dissoc :remote-addr)
-                (dissoc :compojure/route)
-                (dissoc :body)))
+  (log/info (json/generate-string
+             (-> req
+                 (dissoc :route-handler)
+                 (dissoc :async-channel)
+                 (dissoc :route-middleware)
+                 (dissoc :content-type)
+                 (dissoc :remote-addr)
+                 (dissoc :compojure/route)
+                 (dissoc :body))))
   (ok {:dd "test"}))
 
 
