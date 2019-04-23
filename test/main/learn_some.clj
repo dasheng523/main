@@ -1,5 +1,5 @@
 (ns main.learn-some
-  (:require [main.learn :as sut]
+  (:require #_[main.learn :as sut]
             [clojure.test :as t]
             [neo4j-clj.core :as db :refer [defquery]]
             [perseverance.core :as p]
@@ -27,7 +27,7 @@
 
 ;; 重试测试案例
 ;; Fake function that returns a list of files but fails the first three times.
-#_(let [cnt (atom 0)]
+(let [cnt (atom 0)]
   (defn list-s3-files []
     (when (< @cnt 3)
       (swap! cnt inc)
@@ -60,7 +60,7 @@
 (random-sample 0.1 [1 2 3 4 5])
 
 ;; 管道,并行输出一些内容 这个函数异常好用
-(a/pipeline 4 out xform (a/to-chan items))
+#_(a/pipeline 4 out xform (a/to-chan items))
 
 
 
@@ -160,13 +160,13 @@
 
 (eduction xf [1 2 1 5 3 9 3])
 
-(def ac (a/chan 3 (filter odd?)))
-(def bc (a/chan 3))
-(def cc (a/chan 3))
-(a/pipeline 4 bc (map inc) ac)
-(a/pipeline 4 cc (take 5) bc)
+#_(def ac (a/chan 3 (filter odd?)))
+#_(def bc (a/chan 3))
+#_(def cc (a/chan 3))
+#_(a/pipeline 4 bc (map inc) ac)
+#_(a/pipeline 4 cc (take 5) bc)
 
-(do
+#_(do
   (>!! ac 1)
   (>!! ac 2)
   (>!! ac 1)
@@ -175,7 +175,7 @@
   (>!! ac 9)
   (>!! ac 3))
 
-(do
+#_(do
   (println (<!! cc))
   (println (<!! cc))
   (println (<!! cc))

@@ -1,0 +1,95 @@
+{
+  "ref": "refs/heads/master",
+  "before": "6196e4821fa951d947444d80249fe31b9c9d8346",
+  "after": "2d30ec9c1393cfa00b9ffb99d53d31e6bcca5d8e",
+  "compare_url": "http://git.cgkc12366.com:3000/cgkc/cgkc_center/compare/6196e4821fa951d947444d80249fe31b9c9d8346...806712c5d50f44cd64b5b378b40b43e90e4c5871",
+  "commits": [
+    {
+      "id": "2d30ec9c1393cfa00b9ffb99d53d31e6bcca5d8e",
+      "message": "Merge branch 'fix-bug' of cgkc/cgkc_center into master\n",
+      "url": "http://git.cgkc12366.com:3000/cgkc/cgkc_center/commit/2d30ec9c1393cfa00b9ffb99d53d31e6bcca5d8e",
+      "author": {
+        "name": "dasheng523",
+        "email": "hys@cgkc12366.com",
+        "username": "dasheng523"
+      },
+      "committer": {
+        "name": "yesheng",
+        "email": "dasheng523@163.com",
+        "username": ""
+      },
+      "added": [],
+      "removed": [],
+      "modified": [],
+      "timestamp": "2019-04-23T10:13:18+08:00"
+    },
+    {
+      "id": "806712c5d50f44cd64b5b378b40b43e90e4c5871",
+      "message": "测试推送\n",
+      "url": "http://git.cgkc12366.com:3000/cgkc/cgkc_center/commit/806712c5d50f44cd64b5b378b40b43e90e4c5871",
+      "author": {
+        "name": "yesheng",
+        "email": "dasheng523@163.com",
+        "username": ""
+      },
+      "committer": {
+        "name": "yesheng",
+        "email": "dasheng523@163.com",
+        "username": ""
+      },
+      "added": [],
+      "removed": [],
+      "modified": [
+        "app/BLL/DemandBLL.php"
+      ],
+      "timestamp": "2019-04-23T10:12:45+08:00"
+    }
+  ],
+  "repository": {
+    "id": 2,
+    "owner": {
+      "id": 2,
+      "login": "cgkc",
+      "full_name": "",
+      "email": "",
+      "avatar_url": "http://git.cgkc12366.com:3000/img/avatar_default.png",
+      "username": "cgkc"
+    },
+    "name": "cgkc_center",
+    "full_name": "cgkc/cgkc_center",
+    "description": "新后台管理",
+    "private": true,
+    "fork": false,
+    "parent": null,
+    "empty": false,
+    "mirror": false,
+    "size": 75760640,
+    "html_url": "http://git.cgkc12366.com:3000/cgkc/cgkc_center",
+    "ssh_url": "root@git.cgkc12366.com:cgkc/cgkc_center.git",
+    "clone_url": "http://git.cgkc12366.com:3000/cgkc/cgkc_center.git",
+    "website": "",
+    "stars_count": 0,
+    "forks_count": 0,
+    "watchers_count": 2,
+    "open_issues_count": 0,
+    "default_branch": "master",
+    "created_at": "2018-09-18T09:37:06+08:00",
+    "updated_at": "2019-04-23T10:12:52+08:00"
+  },
+  "pusher": {
+    "id": 2,
+    "login": "cgkc",
+    "full_name": "",
+    "email": "",
+    "avatar_url": "http://git.cgkc12366.com:3000/img/avatar_default.png",
+    "username": "cgkc"
+  },
+  "sender": {
+    "id": 1,
+    "login": "dasheng523",
+    "full_name": "",
+    "email": "hys@cgkc12366.com",
+    "avatar_url": "https://secure.gravatar.com/avatar/693baf1acc998c313bd7f72727000f51?d=identicon",
+    "username": "dasheng523"
+  }
+}

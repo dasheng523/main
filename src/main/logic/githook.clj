@@ -1,6 +1,7 @@
 (ns main.logic.githook
   (:require [clojure.java.shell :refer [sh]]
-            [clojure.tools.logging :as log]))
+            [clojure.tools.logging :as log]
+            [cheshire.core :as json]))
 
 
 (defn parse-data
@@ -18,8 +19,15 @@
 
 (defn handle-push
   "处理Push的请求"
-  [req]
-  (let [data (parse-data req)]
-    (when (= "refs/heads/master" (-> data :data :ref))
-      (log/info "部署项目...")
-      (log/info (execute-script "/www/script/deploy.sh")))))
+  [data]
+  (when (= "refs/heads/master" (get (-> data :data) "ref"))
+    (log/info "部署项目...")
+    (log/info (execute-script "/www/script/deploy.sh"))
+    true))
+
+
+
+#_(-> push-data :data)
+#_(get (-> push-data :data) "ref")
+#_(handle-push push-data)
+

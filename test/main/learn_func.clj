@@ -1,6 +1,5 @@
 (ns main.learn-func
-  (:require [main.learn :as sut]
-            [clojure.test :as t]))
+  (:require [clojure.test :as t]))
 
 
 

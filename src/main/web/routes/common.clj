@@ -32,8 +32,9 @@
 
 (defn gogs-hook
   [req]
-  (githook/handle-push req)
-  (ok "ok"))
+  (let [data (githook/parse-data req)]
+    (githook/handle-push data)
+    (ok "ok")))
 
 (def web-routes
   (-> (compojure/routes
