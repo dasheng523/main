@@ -20,6 +20,7 @@
 (defn handle-push
   "处理Push的请求"
   [data]
+  (log/info (get (-> data :data) "ref"))
   (when (= "refs/heads/master" (get (-> data :data) "ref"))
     (log/info "部署项目...")
     (log/info (execute-script "/www/script/deploy.sh"))
