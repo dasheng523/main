@@ -8,8 +8,7 @@
              [ring.util.http-response :refer :all]
              [main.wechat :as wechat]
              [main.common.func :as func]
-             [main.web.middleware :as middleware])
-  (:import (java.util Base64$Encoder)))
+             [main.web.middleware :as middleware]))
 
 
 (defn hello-world-handler

@@ -1,7 +1,11 @@
 (ns main.logic.githook
   (:require [clojure.java.shell :refer [sh]]
             [clojure.tools.logging :as log]
-            [cheshire.core :as json]))
+            [cheshire.core :as json]
+            [pandect.algo.sha1 :as pan1]
+            [pandect.algo.sha256 :as pan]))
+
+
 
 
 (defn parse-data
@@ -12,23 +16,15 @@
    :delivery  (-> req :headers :x-gogs-delivery)
    :data (-> req :json-params)})
 
-(defn execute-script
-  "执行脚本"
-  [script-path]
-  (sh script-path))
-
 (defn handle-push
   "处理Push的请求"
   [data]
   (log/info (get (-> data :data) "ref"))
   (when (= "refs/heads/master" (get (-> data :data) "ref"))
     (log/info "部署项目...")
-    (log/info (execute-script "/www/script/deploy.sh"))
+    (log/info (sh "/www/script/deploy.sh"))
     true))
 
 
-
-#_(-> push-data :data)
-#_(get (-> push-data :data) "ref")
-#_(handle-push push-data)
-
+(println (pan1/sha1 "123456"))
+(pan/sha256 "1111")

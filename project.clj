@@ -19,6 +19,7 @@
                  [ring/ring-codec "1.1.1"]    ; 处理url的
                  [org.slf4j/slf4j-simple "1.6.1"]    ; slf4j日志
                  [metosin/compojure-api "2.0.0-alpha30"]    ; swagger-ui
+                 [pandect "0.6.1"]    ; 加密库
                  [http-kit "2.3.0"]    ; 网络服务器
                  [compojure "1.6.1"]]    ; web路由
   :main ^:skip-aot main.core
